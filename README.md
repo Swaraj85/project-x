@@ -1,4 +1,4 @@
 # project-x
 
-Project to track the development activities
+End to end project development
 
