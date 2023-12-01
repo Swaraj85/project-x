@@ -1,7 +1,9 @@
 package com.swaraj.projectx.product;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface ProductRepository extends JpaRepository<Product,Integer> {
+import java.util.Optional;
 
+public interface ProductRepository extends PagingAndSortingRepository<Product,Long> {
+    Optional<Product> findById(Long id);
 }
