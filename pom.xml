@@ -11,5 +11,6 @@
     <name>project-x</name>
     <modules>
         <module>playground</module>
+        <module>product-micro</module>
     </modules>
 </project>
