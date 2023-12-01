@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class AbstractCar {
 
-    public enum EngineState {STARTED, STOPPED};
+    enum EngineState {STARTED, STOPPED};
 
     private EngineState engineState;
 
