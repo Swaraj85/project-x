@@ -8,7 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CollectionTests {
 
     @Test
-    void testMe(){
-        assertEquals(1,1);
+    void testMe() {
+
+        assertEquals(1, 1);
     }
 }
