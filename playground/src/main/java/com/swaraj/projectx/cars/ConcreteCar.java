@@ -38,4 +38,12 @@ public class ConcreteCar extends AbstractCar {
         log.info("starting concrete car engine");
         super.changeEngineStatus(EngineState.STARTED);
     }
+
+    @Override
+    public String toString() {
+        return "ConcreteCar{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                "} " + super.toString();
+    }
 }
