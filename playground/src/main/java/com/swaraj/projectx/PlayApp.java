@@ -7,14 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.kafka.core.KafkaTemplate;
 
 
 @SpringBootApplication
 @Slf4j
 public class PlayApp implements CommandLineRunner {
+    private final MyCarService myCarService;
+    private final AdvancedCarService advancedCarService;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
-    @Autowired private MyCarService myCarService;
-    @Autowired private AdvancedCarService advancedCarService;
+    @Autowired
+    PlayApp(MyCarService myCarService, AdvancedCarService advancedCarService,
+            KafkaTemplate<String, String> kafkaTemplate) {
+
+        this.myCarService = myCarService;
+        this.advancedCarService = advancedCarService;
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(PlayApp.class, args);
@@ -25,6 +35,7 @@ public class PlayApp implements CommandLineRunner {
         log.info("PlayApp started..");
         myCarService.manageKeys();
         advancedCarService.manageAdvancedKeys();
+        kafkaTemplate.send("mytopic","hello from spring boot kafka");
         log.info("PlayApp started..");
     }
 }

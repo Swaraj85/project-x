@@ -6,10 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,5 +25,11 @@ public class CollectionTests {
     @Test
     void testCollectionCount() {
         assertEquals(3, concreteCars.size());
+    }
+
+    @Test
+    void emptyUnmodifiableList(){
+        Collection<ConcreteCar> objects = Objects.isNull(concreteCars) ? Collections.emptyList() : concreteCars;
+        assertEquals(objects.size(),concreteCars.size());
     }
 }

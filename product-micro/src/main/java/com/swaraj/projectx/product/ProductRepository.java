@@ -7,4 +7,5 @@ import java.util.UUID;
 
 public interface ProductRepository extends PagingAndSortingRepository<Product, String> {
     Optional<Product> findById(String id);
+    Iterable<Product> findByName(String name);
 }

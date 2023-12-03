@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -46,6 +45,12 @@ public class ProductController {
     public ResponseEntity<?> postProduct(@RequestBody Product product) {
         Product saved = productRepository.save(product);
         return ResponseEntity.accepted().build();
+    }
+
+    @GetMapping("/params")
+    public ResponseEntity<Iterable<Product>> getProductsByName(@RequestParam(value = "name", defaultValue = "World") String name){
+        Iterable<Product> byName = productRepository.findByName(name);
+        return ResponseEntity.ok(byName);
     }
 
 }

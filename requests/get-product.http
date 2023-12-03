@@ -16,3 +16,6 @@ POST http://localhost:8080/api/products/ HTTP/1.1
 Content-Type: application/json
 
 {"name":"s22","category":"mobile"}
+
+### get by passing parameters (i.e. ?) in url
+GET http://localhost:8080/api/products/params?name=hola HTTP/1.1
