@@ -1,0 +1,11 @@
+server:
+  port: 8888
+
+spring:
+  main:
+    banner-mode: off
+  cloud:
+    config:
+      server:
+        git:
+          uri: file://C:/projects/microservice/config-prop

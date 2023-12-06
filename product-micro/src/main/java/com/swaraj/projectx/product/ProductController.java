@@ -1,6 +1,9 @@
 package com.swaraj.projectx.product;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -13,7 +16,12 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/products")
+@RefreshScope
+@Slf4j
 public class ProductController {
+
+    @Value("${page.size}")
+    private int size = 0;
 
     private ProductRepository productRepository;
 
@@ -36,6 +44,7 @@ public class ProductController {
     @GetMapping("/{id}")
     ResponseEntity<Product> findById(@PathVariable String id)
     {
+        log.info("page size is : {}", size);
         Optional<Product> byId = productRepository.findById(id);
         return byId.isPresent()? ResponseEntity.ok(byId.get())
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).build() ;

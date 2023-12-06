@@ -12,5 +12,6 @@
     <modules>
         <module>playground</module>
         <module>product-micro</module>
+        <module>config-server</module>
     </modules>
 </project>

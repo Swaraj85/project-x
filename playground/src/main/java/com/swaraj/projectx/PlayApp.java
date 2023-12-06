@@ -1,8 +1,10 @@
 package com.swaraj.projectx;
 
+import com.swaraj.projectx.cars.CarException;
 import com.swaraj.projectx.cars.service.AdvancedCarService;
 import com.swaraj.projectx.cars.service.MyCarService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +19,7 @@ public class PlayApp implements CommandLineRunner {
     private final AdvancedCarService advancedCarService;
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    @Autowired
+    //@Autowired
     PlayApp(MyCarService myCarService, AdvancedCarService advancedCarService,
             KafkaTemplate<String, String> kafkaTemplate) {
 
@@ -33,9 +35,20 @@ public class PlayApp implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("PlayApp started..");
-        myCarService.manageKeys();
-        advancedCarService.manageAdvancedKeys();
-        kafkaTemplate.send("mytopic","hello from spring boot kafka");
-        log.info("PlayApp started..");
+
+        try {
+            myCarService.manageKeys();
+            //kafkaTemplate.send("mytopic", "hello from spring boot kafka");
+            advancedCarService.manageAdvancedKeys();
+        } catch (CarException carException) {
+
+            String rootCauseMessage = ExceptionUtils.getRootCauseMessage(carException);
+            String stackTrace = ExceptionUtils.getStackTrace(carException);
+            log.error("Global error: {} {}", rootCauseMessage, stackTrace);
+            System.exit(1);
+        }
+
+
+        log.info("PlayApp finished..");
     }
 }
