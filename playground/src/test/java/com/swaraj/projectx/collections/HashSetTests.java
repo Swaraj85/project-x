@@ -12,7 +12,7 @@ public class HashSetTests {
     @Test
     void putEntriesInSet() {
 
-        Set<String> uniqueStrings= new HashSet<>();
+        Set<String> uniqueStrings = new HashSet<>();
         uniqueStrings.add("alpha");
         uniqueStrings.add("beta");
         uniqueStrings.add("gamma");
