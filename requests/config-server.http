@@ -1,0 +1,2 @@
+### get application properties for productservice from config service
+GET http://localhost:8888/productservice/default/master HTTP/1.1

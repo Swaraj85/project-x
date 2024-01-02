@@ -14,5 +14,6 @@
         <module>product-micro</module>
         <module>config-server</module>
         <module>algo</module>
+        <module>inventory</module>
     </modules>
 </project>

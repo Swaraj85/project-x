@@ -1,5 +1,7 @@
 package com.swaraj.projectx.algo;
 
+import java.util.Arrays;
+
 public class MyUltimateSearchAlgorithm {
     public static int binarySerach(int[] sortedArray, int valueToSearch) {
         int arrayLength = sortedArray.length;

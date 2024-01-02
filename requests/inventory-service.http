@@ -1,0 +1,20 @@
+### hit default inventory service url
+GET http://localhost:8080/ HTTP/1.1
+
+### actuator end points
+GET http://localhost:8080/actuator HTTP/1.1
+
+### inventory
+GET http://localhost:8080/inventory
+
+### inventory
+GET http://localhost:8080/inventory/1234
+
+### query parameters
+GET https://api.refinitiv.com/data/news/v1/headlines?query="USA"&start=-5&end=0
+
+### get v1 api
+GET http://localhost:8080/v1/api
+
+### get v1 api inventory
+GET http://localhost:8080/v1/api/inventory/2344
