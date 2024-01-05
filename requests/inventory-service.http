@@ -14,7 +14,7 @@ GET http://localhost:8080/inventory/1234
 GET https://api.refinitiv.com/data/news/v1/headlines?query="USA"&start=-5&end=0
 
 ### get v1 api
-GET http://localhost:8080/v1/api
+GET http://localhost:8081/v1/api
 
 ### get v1 api inventory
 GET http://localhost:8080/v1/api/inventory/2344

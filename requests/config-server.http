@@ -1,2 +1,20 @@
 ### get application properties for productservice from config service
-GET http://localhost:8888/productservice/default/master HTTP/1.1
+GET http://localhost:9999/productservice/default/master
+
+### inventory-service client properties, form dev env, using master git branch
+GET http://localhost:9999/inventory-service/dev/master
+
+### inventory service properties, prod env, using master git branch
+GET http://localhost:9999/inventory-service/prod/master
+
+### inventory service properties, default env, using master git branch
+GET http://localhost:9999/inventory-service/default/master
+
+### hit 
+GET http://localhost:9999/inventory-service/dev/main
+
+### hit 9999
+GET http://localhost:9999/inventory-service/dev/main
+
+### host url
+GET http://192.168.1.5:9090/inventory-service/dev/master 

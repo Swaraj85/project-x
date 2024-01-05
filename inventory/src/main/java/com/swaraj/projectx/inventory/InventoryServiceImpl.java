@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class InventoryServiceImpl implements InventoryService {
 
-//    @Value("${secret.name}")
-//    private String injectedName;
+    @Value("${greeting.message}")
+    private String message;
 
 //    @Value("${env}")
 //    private String environment;
 
     @Override
     public void operation1() {
-        //log.info("environment: {} secret word is {}", environment);
+        log.info("message: {}", message);
         log.info("executing -> operation1");
     }
 
