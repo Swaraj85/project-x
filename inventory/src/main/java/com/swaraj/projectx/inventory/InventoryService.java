@@ -1,7 +1,9 @@
 package com.swaraj.projectx.inventory;
 
+import java.util.List;
+
 public interface InventoryService {
-    void operation1();
-    void operation2();
-    void operation3();
+    InventoryDto saveInventory(InventoryDto inventoryDto);
+
+    List<InventoryDto> getAllInventory();
 }

@@ -26,3 +26,7 @@ Install elasticsearch
 cd projectx-infra\es   
 docker-compose up -d
 
+## config server setup
+
+`java -Dserver.port=8888 -jar .\target\config-server-1.0-SNAPSHOT.jar`  
+run config server with port 8888

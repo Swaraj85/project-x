@@ -1,0 +1,33 @@
+services:
+  inventoryservice:
+    # image: nginx:1.25.3-alpine
+    build:
+      context: ./inventory
+      dockerfile: Dockerfile
+    image: inventory-service
+#    networks:
+#      - my-shared-network
+#    volumes:
+#      - ./my-data:/usr/share/elasticsearch/config/certs
+#      - my-named-global-volume:/my-volumes/named-global-volume
+    ports:
+     - 8080:8080
+    environment:
+      PROFILE: dev
+      CONFIGSERVER_URI: 192.168.1.2
+#
+#  alpine-vm:
+#    image: nginx:1.25.3-alpine
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - my-shared-network
+#    volumes:
+#      - my-named-global-volume:/another-path/the-same-named-global-volume
+#
+#volumes:
+#  my-named-global-volume:
+#
+#networks:
+#  my-shared-network: {}
+#  my-private-network: {}

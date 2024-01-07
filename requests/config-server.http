@@ -16,5 +16,6 @@ GET http://localhost:9999/inventory-service/dev/main
 ### hit 9999
 GET http://localhost:9999/inventory-service/dev/main
 
-### host url
-GET http://192.168.1.5:9090/inventory-service/dev/master 
+### temp trial
+GET http://192.168.1.5:9999/inventory-service/dev
+

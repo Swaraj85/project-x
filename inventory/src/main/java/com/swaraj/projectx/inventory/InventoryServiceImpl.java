@@ -1,32 +1,56 @@
 package com.swaraj.projectx.inventory;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.id.GUIDGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Slf4j
 @Service
 public class InventoryServiceImpl implements InventoryService {
 
+    private final InventoryRepository inventoryRepository;
+
     @Value("${greeting.message}")
     private String message;
 
-//    @Value("${env}")
-//    private String environment;
-
-    @Override
-    public void operation1() {
-        log.info("message: {}", message);
-        log.info("executing -> operation1");
+    @Autowired
+    public InventoryServiceImpl(InventoryRepository inventoryRepository){
+        this.inventoryRepository = inventoryRepository;
     }
 
     @Override
-    public void operation2() {
-        log.info("executing -> operation2");
+    public InventoryDto saveInventory(InventoryDto inventoryDto){
+        Inventory inventory = new Inventory();
+        UUID uuid = UUID.randomUUID();
+        inventory.setId(uuid);
+        inventoryDto.setId(uuid);
+        inventory.setPrice(inventoryDto.getPrice());
+        inventory.setName(inventoryDto.getName());
+        inventory.setQuantity(inventoryDto.getQuantity());
+        Inventory savedInventory = inventoryRepository.save(inventory);
+        inventory.setId(savedInventory.getId());
+        return inventoryDto;
     }
 
     @Override
-    public void operation3() {
-        log.info("executing -> operation3");
+    public List<InventoryDto> getAllInventory() {
+        Stream<InventoryDto> inventoryDtoStream = inventoryRepository.findAll().stream().map(this::convert);
+        return inventoryDtoStream.collect(Collectors.toList());
+    }
+
+    private InventoryDto convert(Inventory inventory){
+        InventoryDto inventoryDto = new InventoryDto();
+        inventoryDto.setId(inventory.getId());
+        inventoryDto.setPrice(inventory.getPrice());
+        inventoryDto.setQuantity(inventory.getQuantity());
+        inventoryDto.setName(inventory.getName());
+        return inventoryDto;
     }
 }

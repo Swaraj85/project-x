@@ -1,10 +1,21 @@
-FROM adoptopenjdk/openjdk11:x86_64-alpine-jdk-11.0.11_9
+FROM ubuntu:22.04
+
+# install ping utilities
+RUN apt-get update -y
+RUN apt-get install -y iputils-ping
+RUN apt-get install openjdk-11-jdk -y
+
+# Copy the jar and script file into our app
+COPY ./target/*.jar /app/app.jar
+COPY run.sh /app/run.sh
 
 # Setting up work directory
 WORKDIR /app
 
-# Copy the jar file into our app
-COPY ./target/*.jar /app/app.jar
+# Make the shell script executable
+RUN chmod +x run.sh
 
 # Starting the application
-ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-jar", "/app/app.jar"]
+#ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-jar", "/app/app.jar"]
+#CMD ["./run.sh"]
+ENTRYPOINT [ "sh", "-c", "./run.sh" ]

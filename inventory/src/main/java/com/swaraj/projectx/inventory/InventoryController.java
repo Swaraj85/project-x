@@ -2,10 +2,7 @@ package com.swaraj.projectx.inventory;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +11,7 @@ import java.util.stream.Stream;
 
 @RestController
 @Slf4j
-@RequestMapping(value = "v1/api")
+@RequestMapping(value = "v1/api/inventory")
 public class InventoryController {
 
     private final InventoryService inventoryService;
@@ -24,23 +21,22 @@ public class InventoryController {
         this.inventoryService = inventoryService;
     }
 
-    @GetMapping
-    String home() {
-        log.info("home url was hit");
-        inventoryService.operation1();
-        return "hello inventory service";
-    }
 
-    @GetMapping("/inventory")
+    @GetMapping
     List<InventoryDto> getInventory() {
         log.info("inventory url was hit");
-        return getInMemoryInventory(10);
+        return inventoryService.getAllInventory();
     }
 
-    @GetMapping("/inventory/{inventoryId}")
-    InventoryDto getInventory(@PathVariable Long inventoryId) {
+    @GetMapping("/{inventoryId}")
+    InventoryDto getInventory(@PathVariable String inventoryId) {
         log.info("inventory id requested {}", inventoryId);
         return getInMemoryInventory(1).stream().findFirst().get();
+    }
+
+    @PostMapping
+    InventoryDto saveInventory(@RequestBody InventoryDto inventoryDto){
+        return inventoryService.saveInventory(inventoryDto);
     }
 
     private List<InventoryDto> getInMemoryInventory(int objectCount) {
