@@ -1,0 +1,12 @@
+server:
+  port: 8334
+
+eureka:
+  instance:
+    preferIpAddress: true
+    hostname: registry-service
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

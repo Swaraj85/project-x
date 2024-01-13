@@ -53,4 +53,11 @@ public class SortAlgorithm {
             numbers[selected_key_position] = selected_key;
         }
     }
+
+    public static void quickSort(int[] num, int start_index, int end_index) {
+        if (end_index - start_index <= 0) return;
+        int pivot_position = AlgoUtils.partition(num, start_index, end_index);
+        quickSort(num, start_index, pivot_position - 1);
+        quickSort(num, pivot_position + 1, end_index);
+    }
 }

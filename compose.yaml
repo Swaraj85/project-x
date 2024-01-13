@@ -1,33 +1,45 @@
 services:
-  inventoryservice:
-    # image: nginx:1.25.3-alpine
+  config-service:
     build:
-      context: ./inventory
+      context: ./config-server
       dockerfile: Dockerfile
-    image: inventory-service
-#    networks:
-#      - my-shared-network
-#    volumes:
-#      - ./my-data:/usr/share/elasticsearch/config/certs
-#      - my-named-global-volume:/my-volumes/named-global-volume
+    image: config-service
+    volumes:
+      - ./config-server-data:/data/config-server-data
     ports:
-     - 8080:8080
+     - 9999:9999
+
+  registry-service:
+    depends_on:
+      - config-service
+    build:
+      context: ./registry
+      dockerfile: Dockerfile
+    image: registry-service
+    ports:
+      - 8761:8761
     environment:
       PROFILE: dev
-      CONFIGSERVER_URI: 192.168.1.2
-#
-#  alpine-vm:
-#    image: nginx:1.25.3-alpine
-#    ports:
-#      - "8080:8080"
-#    networks:
-#      - my-shared-network
-#    volumes:
-#      - my-named-global-volume:/another-path/the-same-named-global-volume
-#
-#volumes:
-#  my-named-global-volume:
-#
-#networks:
-#  my-shared-network: {}
-#  my-private-network: {}
+      CONFIGSERVER_URI: config-service:9999
+      CONFIGSERVER_PORT: 9999
+
+  order-service:
+    depends_on: [config-service,registry-service]
+    image: order-service
+    build:
+      context: ./order
+      dockerfile: Dockerfile
+    ports:
+      - 8334:8334
+    environment:
+      PROFILE: dev
+      CONFIGSERVER_URI: config-service:9999
+
+  database:
+    image: postgres:16.1-alpine3.19
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=p0stgr@s
+      - POSTGRES_DB=project_x_local

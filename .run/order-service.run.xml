@@ -1,0 +1,21 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="order-service" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.swaraj.projectx.OrderApp" />
+    <module name="order" />
+    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=local -Dspring.cloud.config.uri=localhost:9999" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.swaraj.projectx.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+      <option name="credential" />
+      <option name="region" />
+      <option name="useCurrentConnection" value="false" />
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -32,9 +32,18 @@ class SortAlgorithmTest {
         isArraySorted(numbers);
     }
 
+    @Test
+    void quickSort() {
+        int[] numbers = new int[]{0, 5, 2, 1, 6, 3, 9, 23, 4};
+        SortAlgorithm.quickSort(numbers, 0, numbers.length - 1);
+        isArraySorted(numbers);
+    }
+
     private static void isArraySorted(int[] numbers) {
         for (int i = 0; i < numbers.length - 1; i++) {
             assertTrue(numbers[i + 1] > numbers[i]);
         }
     }
+
+
 }

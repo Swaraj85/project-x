@@ -2,7 +2,6 @@ package com.swaraj.projectx.algo;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +11,7 @@ class MyUltimateAlgorithmTest {
     @Test
     void testBinarySearch() {
         int[] sortedArray = IntStream.range(0, 100).toArray();
-        int i = MyUltimateSearchAlgorithm.binarySerach(sortedArray, 45);
+        int i = MyUltimateSearchAlgorithm.binarySearch(sortedArray, 45);
         assertEquals(45, i);
     }
 

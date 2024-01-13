@@ -1,0 +1,7 @@
+### get order service details
+GET http://localhost:8761/eureka/apps/order-service
+Accept: application/json
+
+### get all apps
+GET http://localhost:8761/eureka/apps/
+Accept: application/json

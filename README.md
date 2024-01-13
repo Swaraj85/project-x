@@ -30,3 +30,7 @@ docker-compose up -d
 
 `java -Dserver.port=8888 -jar .\target\config-server-1.0-SNAPSHOT.jar`  
 run config server with port 8888
+
+## eureka registry setup
+
+1. http://localhost:8761/eureka/apps/order-service to get location details of order microservice

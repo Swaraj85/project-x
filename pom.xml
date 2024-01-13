@@ -15,5 +15,7 @@
         <module>config-server</module>
         <module>algo</module>
         <module>inventory</module>
+        <module>registry</module>
+        <module>order</module>
     </modules>
 </project>
