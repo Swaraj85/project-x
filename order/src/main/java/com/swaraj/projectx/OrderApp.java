@@ -1,18 +1,14 @@
 package com.swaraj.projectx;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@RestController
+@EnableFeignClients
+@Slf4j
 public class OrderApp {
-
-    @GetMapping("/")
-    public String home() {
-        return "order-service";
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(OrderApp.class, args);

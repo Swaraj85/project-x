@@ -35,6 +35,18 @@ services:
       PROFILE: dev
       CONFIGSERVER_URI: config-service:9999
 
+  inventory-service:
+    depends_on: [ config-service,registry-service ]
+    image: inventory-service
+    build:
+      context: ./inventory
+      dockerfile: Dockerfile
+    ports:
+      - 8340:8340
+    environment:
+      PROFILE: dev
+      CONFIGSERVER_URI: config-service:9999
+
   database:
     image: postgres:16.1-alpine3.19
     ports:

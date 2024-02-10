@@ -2,6 +2,7 @@ package com.swaraj.projectx.inventory;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,10 +29,11 @@ public class InventoryController {
         return inventoryService.getAllInventory();
     }
 
-    @GetMapping("/{inventoryId}")
+    //@GetMapping(value = "/{inventoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{inventoryId}")
     InventoryDto getInventory(@PathVariable String inventoryId) {
         log.info("inventory id requested {}", inventoryId);
-        return getInMemoryInventory(1).stream().findFirst().get();
+        return inventoryService.getInventory(inventoryId);
     }
 
     @PostMapping

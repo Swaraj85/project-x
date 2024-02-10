@@ -1,4 +1,4 @@
-package com.swaraj.projectx.inventory;
+package com.swaraj.projectx;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
-public class InventoryDto {
+public class Inventory {
     private String id;
 
     private String name;

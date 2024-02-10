@@ -17,5 +17,8 @@ GET http://localhost:9999/inventory-service/dev/main
 GET http://localhost:9999/inventory-service/dev/
 
 ### temp trial
-GET http://192.168.1.5:9999/inventory-service/dev
+GET http://localhost:9999/inventory-service/dev
+
+### order service config
+GET http://localhost:9999/order-service/dev/
 

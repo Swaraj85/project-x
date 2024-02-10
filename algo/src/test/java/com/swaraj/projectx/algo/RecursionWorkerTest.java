@@ -38,15 +38,39 @@ class RecursionWorkerTest {
     }
 
     @Test
-    void partitionTest(){
+    void partitionTest() {
         int[] arr = new int[]{0, 5, 2, 1, 6, 3};
         int left_index = AlgoUtils.partition(arr, 0, arr.length - 1);
         printArray(arr);
     }
 
-    private void printArray(int[] arr){
+    private void printArray(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.println("arr[i] = " + arr[i]);
         }
+    }
+
+    @Test
+    void print_array_recursion() {
+        print(4);
+        System.out.println("-------");
+        print2(4);
+    }
+
+    @Test
+    void treeTest(){
+
+    }
+
+    private void print(int n) {
+        if (n == 0) return; // base case
+        print(n - 1);
+        System.out.println("n = " + n);
+    }
+
+    private void print2(int n) {
+        if (n == 0) return;
+        System.out.println("n = " + n);
+        print2(n - 1);
     }
 }

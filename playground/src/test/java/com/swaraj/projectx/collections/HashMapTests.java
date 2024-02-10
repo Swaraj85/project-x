@@ -25,7 +25,7 @@ public class HashMapTests {
     }
 
     @Test
-    void iterateOverMap(){
+    void iterateOverMap() {
         myHashMap.forEach((key, value) -> {
             System.out.println("Key = " + key + " Value =" + value);
         });
@@ -54,5 +54,10 @@ public class HashMapTests {
         Map<String, Integer> myThirsHashMap = new LinkedHashMap<>();
         mySecondHashMap.put("one", null);
         mySecondHashMap.put("one", null);
+    }
+
+    @Test
+    void imp_function_calls() {
+        Map<String, Integer> mapper = new HashMap<>();
     }
 }

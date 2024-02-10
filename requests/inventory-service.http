@@ -1,11 +1,14 @@
 ### get v1 api
-GET http://localhost:8080/v1/api/inventory/53e500be-6730-4afb-a0d2-3c7abf980de3
+GET http://localhost:8340/v1/api/inventory/212c49c3-0f47-4ab2-b33a-1cafc20adb6d
 
 ### get v1 api inventory
-GET http://localhost:8080/v1/api/inventory/
+GET http://localhost:8340/v1/api/inventory/
 
 ### craete new inventory
-POST http://localhost:8080/v1/api/inventory/
+POST http://localhost:8340/v1/api/inventory/
 Content-Type: application/json
 
-{"name":"s23","quantity":"300","price": "300"}
+{"name":"s25","quantity":"300","price": "300"}
+
+### get single inventory
+GET http://localhost:8340/v1/api/inventory/212c49c3-0f47-4ab2-b33a-1cafc20adb6d

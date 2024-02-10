@@ -2,6 +2,7 @@
   <configuration default="false" name="order-service" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.swaraj.projectx.OrderApp" />
     <module name="order" />
+    <option name="PROGRAM_PARAMETERS" value="--debug" />
     <option name="VM_PARAMETERS" value="-Dspring.profiles.active=local -Dspring.cloud.config.uri=localhost:9999" />
     <extension name="coverage">
       <pattern>

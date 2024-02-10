@@ -2,6 +2,9 @@ package com.swaraj.projectx.ds;
 
 import org.junit.jupiter.api.Test;
 
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest {
@@ -21,7 +24,7 @@ class LinkedListTest {
     }
 
     @Test
-    void search(){
+    void search() {
         LinkedList<Integer> linkedList = new LinkedList<>();
         linkedList.addData(1);
         linkedList.addData(24);
@@ -31,7 +34,7 @@ class LinkedListTest {
     }
 
     @Test
-    void retrieval(){
+    void retrieval() {
         LinkedList<Integer> linkedList = new LinkedList<>();
         linkedList.addData(1);
         linkedList.addData(24);

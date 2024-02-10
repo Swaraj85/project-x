@@ -1,2 +1,2 @@
 ### send order service request
-GET http://localhost:8334/
+GET http://localhost:8334/v1/order/212c49c3-0f47-4ab2-b33a-1cafc20adb6d

@@ -6,4 +6,7 @@ public interface InventoryService {
     InventoryDto saveInventory(InventoryDto inventoryDto);
 
     List<InventoryDto> getAllInventory();
+
+    InventoryDto getInventory(String inventory_id);
+
 }

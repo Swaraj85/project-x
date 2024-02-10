@@ -2,12 +2,11 @@ package com.swaraj.projectx.collections;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.SortedSet;
+import java.util.*;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HashSetTests {
     @Test
@@ -17,5 +16,14 @@ public class HashSetTests {
         uniqueStrings.add("alpha");
         uniqueStrings.add("beta");
         uniqueStrings.add("gamma");
+        uniqueStrings.add("alpha");
+
+        assertTrue(uniqueStrings.contains("alpha"));
+    }
+
+    @Test
+    void init(){
+        List<String> stringer = Arrays.asList("one", "two");
+        Set<String> uniqueElements = new HashSet<>(stringer);
     }
 }
