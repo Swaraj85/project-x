@@ -23,10 +23,19 @@ public class QueueTests {
     }
 
     @Test
-    void queue_insertion2(){
+    void queue_insertion2() {
         Queue<String> mySecondQueue = new LinkedList<>();
-        mySecondQueue.add("one");
-        mySecondQueue.add("two");
-        assertEquals("one",mySecondQueue.remove());
+        mySecondQueue.offer("one"); // add element in queue
+        mySecondQueue.offer("two");
+        mySecondQueue.offer("three");
+        System.out.println(mySecondQueue);
+        assertEquals("one", mySecondQueue.peek()); // check top element without removing it
+
+        System.out.println(mySecondQueue);
+
+        assertEquals("one", mySecondQueue.poll()); // remove element from queue , in FIFO manner
+        System.out.println(mySecondQueue);
+        assertEquals("two", mySecondQueue.poll());
+        System.out.println(mySecondQueue);
     }
 }

@@ -2,10 +2,7 @@ package com.swaraj.projectx.collections;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -33,5 +30,16 @@ public class StackTests {
         while (!myStack.isEmpty()) {
             System.out.println("myStack.pop() = " + myStack.pop());
         }
+    }
+
+    @Test
+    void simple_stack_initialization() {
+        Stack<String> animals = new Stack<>();
+        animals.push("lion");
+        animals.push("cat");
+        animals.push("horse");
+
+        assertEquals("horse", animals.pop());
+        assertEquals("cat", animals.pop());
     }
 }

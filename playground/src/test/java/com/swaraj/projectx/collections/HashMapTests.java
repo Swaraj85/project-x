@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -58,6 +60,45 @@ public class HashMapTests {
 
     @Test
     void imp_function_calls() {
-        Map<String, Integer> mapper = new HashMap<>();
+        Map<String, Integer> numbers = new HashMap<>();
+        numbers.put("one", 1);
+        numbers.put("two", 2);
+        numbers.put("three", 3);
+        numbers.put("nine", 9);
+        numbers.put("eight", 8);
+        System.out.println(numbers);
+//        for (Map.Entry<String, Integer> entry : numbers.entrySet()) {
+//            System.out.println(entry);
+//        }
+        int incrementer = 1;
+
+        // increment existing value of key by 1
+        numbers.computeIfPresent("one", (key, existingValue) -> {
+            return existingValue + incrementer;
+        });
+
+        // returns 0 bec key "seven" doesnt exist
+        assertEquals(0, numbers.getOrDefault("seven", 0));
+
+        System.out.println(numbers);
+    }
+
+    @Test
+    void array_of_hash_map() {
+        Map<String, String>[] paritions = new HashMap[30];
+        paritions[0] = new HashMap<>();
+    }
+
+    @Test
+    void hash_of_objects() {
+        Map<Object, Object> hasher = new HashMap<>();
+        hasher.put("aa", 1);
+        hasher.put(123, 456);
+        System.out.println(hasher.get("aa"));
+        System.out.println(hasher.get(123));
+
+        String s = new String("abc");
+        s.toUpperCase();
+        System.out.println(s);
     }
 }

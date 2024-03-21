@@ -28,9 +28,15 @@ public class TreeMapTests {
     }
 
     @Test
-    void binaryPlay(){
-        int val = 678588;
-        System.out.println("Integer.toBinaryString = " + Integer.toBinaryString(val));
-        System.out.println("Integer.toHexString = " + Integer.toHexString(val));
+    void binaryPlay() {
+        // keys are sorted, in this case key is string , hence sorted alphabetically
+        TreeMap<String, Integer> numbers = new TreeMap<>();
+        //NavigableMap<String, Integer> numbers = new TreeMap<>();
+        numbers.put("one", 1);
+        numbers.put("two", 2);
+        numbers.put("three", 3);
+        numbers.put("nine", 9);
+        numbers.put("eight", 8);
+        System.out.println(numbers);
     }
 }

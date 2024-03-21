@@ -16,6 +16,11 @@ public class ConcreteCar extends AbstractCar {
     }
 
     private String name;
+
+    public int getAge() {
+        return age;
+    }
+
     private int age;
 
     public ConcreteCar(String name, int age) {

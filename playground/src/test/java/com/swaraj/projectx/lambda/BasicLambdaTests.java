@@ -6,10 +6,8 @@ import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -20,13 +18,6 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Data
-@AllArgsConstructor
-@ToString
-class Book {
-    private String title;
-    private int isbnNumber;
-}
 
 public class BasicLambdaTests {
 
@@ -37,7 +28,6 @@ public class BasicLambdaTests {
         }
 
         static void doSomething() {
-
         }
 
         //void myApply();
@@ -98,5 +88,32 @@ public class BasicLambdaTests {
         List<String> stringList = Collections.emptyList();
         String s = stringList.stream().findAny().orElseGet(supplier); // empty list, so supplier will be called
         assertTrue(s.equalsIgnoreCase(supplier.get()));
+    }
+
+    @Test
+    void simple_state_change_impl() {
+        StateOwner stateOwnerObject = new StateOwner();
+
+        stateOwnerObject.addListener((oldState, newState) -> {
+            System.out.println("step 1: oldState is manipulated by newState");
+            //throw new InterruptedException("some exception");
+        });
+
+        stateOwnerObject.addListener((oldState, newState) -> {
+            System.out.println("step 2: oldState is manipulated by newState");
+        });
+
+        stateOwnerObject.notifyChange();
+    }
+
+    @Test
+    void bi_function_test() {
+        BiFunction<String, String, Integer> funcPointer = this::func1;
+        Integer apply = funcPointer.apply("one", "seven");
+        assertEquals(8, apply);
+    }
+
+    private Integer func1(String arg1, String arg2) {
+        return arg1.length() + arg2.length();
     }
 }

@@ -12,11 +12,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PriorityQueueTests {
     @Test
     void queueAdditionAndRemoval() {
-        Queue<Integer> workLoad = new PriorityQueue<>();
-        workLoad.addAll(List.of(1, 6, 2, 3, 4, 99));
+        Queue<Integer> minHeap = new PriorityQueue<>(); // min heap
+        Queue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder()); // max heap
+        minHeap.addAll(List.of(1, 6, 2, 3, 4, 99));
+        maxHeap.addAll(List.of(1, 6, 2, 3, 4, 99));
 
-        while (!workLoad.isEmpty()) {
-            System.out.println("workLoad.remove() = " + workLoad.remove());
+        minHeap.offer(24);
+        minHeap.offer(12);
+
+        while (!minHeap.isEmpty()) {
+            System.out.println(minHeap);
+            System.out.println("removed: " + minHeap.poll());
         }
+
+        System.out.println("maxheap: " + maxHeap);
+        assertEquals(99, maxHeap.poll()); // since its max heap
     }
 }

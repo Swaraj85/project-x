@@ -207,6 +207,17 @@ public class ArrayProblemTests {
         return res;
     }
 
+    int factorialRecursive(int num) {
+        if (num == 1) return 1;
+        return num * factorialRecursive(num - 1);
+    }
+
+    @Test
+    void test_factorial_recursion(){
+        int i = factorialRecursive(4);
+        assertEquals(24, i);
+    }
+
     @Test
     void longest_consecutive_subsequence() {
         /*

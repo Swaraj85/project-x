@@ -63,4 +63,25 @@ public class ArrayTests {
         for (int i = 0; i < listy.get(0).size(); i++) {
         }
     }
+
+    @Test
+    void array_manipulation_via_arrays() {
+        int[] arr = new int[]{1, 233, 4, 68, 7, 89, 9, 11, 33, 555};
+        Arrays.sort(arr); // sort the array
+        printArray(arr);
+
+        int elementToSearch = 11;
+        int searchedIndex = Arrays.binarySearch(arr, elementToSearch);
+        System.out.printf("index of element %d in arr is %d%n", elementToSearch, searchedIndex);
+
+        Arrays.fill(arr, -1); // fill array with -1
+        printArray(arr);
+    }
+
+    void printArray(int[] arr) {
+        for (int i : arr) {
+            System.out.print(i+ " ");
+        }
+        System.out.println();
+    }
 }

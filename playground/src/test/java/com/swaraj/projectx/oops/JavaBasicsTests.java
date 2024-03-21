@@ -2,7 +2,7 @@ package com.swaraj.projectx.oops;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Objects;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,10 +34,45 @@ class JavaBasicsClass {
     }
 }
 
+@FunctionalInterface
+interface MyFunctionalInterface {
+    static List<String> objects = new ArrayList<>(); // static class level variable
+    void method1(); // only one abstract method
+
+    default void method2() { // this is default method
+        System.out.println("inside MyFunctionalInterface -> method2");
+        objects.add("element added");
+        //method3(); static method can be called from default method
+    }
+
+    static int method3() { // static methods are allowed
+        System.out.println("static MyFunctionalInterface -> method3");
+        return objects.size();
+    }
+}
+
+class FunctionalInterfaceImpl implements MyFunctionalInterface {
+
+    @Override
+    public void method1() {
+
+    }
+
+    @Override
+    public void method2() {
+        MyFunctionalInterface.super.method2();
+        MyFunctionalInterface.method3();
+    }
+}
+
 class JavaBasicsChildClass extends JavaBasicsClass {
     public JavaBasicsChildClass(String name) {
         super(name);
     }
+}
+
+class MyNonAbstractClass {
+    //abstract void method1(); method can be declared abstract if class is abstract
 }
 
 public class JavaBasicsTests {
@@ -104,5 +139,13 @@ public class JavaBasicsTests {
         thread1.join();
         thread2.join();
         System.out.println("finished");
+    }
+
+    @Test
+    void java8_interface_test() {
+        MyFunctionalInterface myFunctionalInterface = new FunctionalInterfaceImpl();
+        myFunctionalInterface.method2();
+        myFunctionalInterface.method2();
+        System.out.println("MyFunctionalInterface.method3() = " + MyFunctionalInterface.method3());
     }
 }

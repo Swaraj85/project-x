@@ -67,7 +67,7 @@ public class InheritanceTests {
     }
 
     @Test
-    void test_instance_of(){
+    void test_instance_of() {
         Student student = new Student("swaraj", 39);
         assertTrue(student instanceof Person);
         assertTrue(student instanceof IAdorable);
