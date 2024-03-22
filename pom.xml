@@ -17,5 +17,6 @@
         <module>inventory</module>
         <module>registry</module>
         <module>order</module>
+        <module>spring-basic-security</module>
     </modules>
 </project>
