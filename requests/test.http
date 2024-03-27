@@ -1,1 +1,33 @@
-GET http://localhost:9999/
+### find by id
+GET http://localhost:8080/functionality2/products?productType=hola
+
+### get single product with content negotation
+GET http://localhost:8080/products/1?format=xml
+##Content-Type: application/xml
+
+### find by path variable
+GET http://localhost:8080/products/search/mobile
+
+### find by request parameters
+GET http://localhost:8080/products/filter?productType=education
+
+### find by request parameters, when not passed
+GET http://localhost:8080/products/filter
+
+### save product
+POST http://localhost:8080/products/save
+Content-Type: application/json
+
+{"name":"s25","productType":"mobile","quantity": "300"}
+
+### update product
+PUT http://localhost:8080/products/1
+Content-Type: application/json
+
+{"name":"s25","productType":"mobile","quantity": "300"}
+
+### bad request
+POST http://localhost:8080/products/save
+Content-Type: application/json
+
+{"name":"s25","productType":"mobile",
